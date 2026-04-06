@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Box Model & Display Property Demo</title>
+  
+  <style>
+    /* Reset some default margins/padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f0f4f8;
+      padding: 30px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #34495e;
+      margin: 35px 0 15px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+    }
+
+    /* ───────────────────────────────────────
+       BOX MODEL DEMONSTRATION
+    ─────────────────────────────────────── */
+    .box-model-demo {
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+
+    .box {
+      /* Everything is visible in this box */
+      width: 300px;
+      height: 140px;
+      
+      /* Content area */
+      background-color: #ffeaa7;
+      
+      /* Inside the content - padding */
+      padding: 25px;
+      
+      /* Around padding - border */
+      border: 8px solid #e17055;
+      
+      /* Outside border - margin */
+      margin: 40px auto;
+      
+      /* You can see the full box model here */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .explanation {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      margin: 20px 0;
+    }
+
+    /* ───────────────────────────────────────
+       DISPLAY PROPERTY DEMONSTRATION
+    ─────────────────────────────────────── */
+    .display-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .item {
+      background-color: #74b9ff;
+      color: white;
+      padding: 15px 20px;
+      margin: 10px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    /* Different display values */
+    .block-demo    { display: block;    width: 180px; }
+    .inline-demo   { display: inline;   width: 180px; }   /* width & height ignored */
+    .inline-block  { display: inline-block; width: 180px; }
+    .none-demo     { display: none; }
+    .flex-demo {
+      display: flex;
+      justify-content: space-around;
+      background-color: #dfe6e9;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .flex-demo .item {
+      background-color: #0984e3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Box Model & Display Property</h1>
+
+  <!-- BOX MODEL SECTION -->
+  <div class="box-model-demo">
+    <h2>1. CSS Box Model Demonstration</h2>
+    
+    <div class="box">
+      This is the <strong>content</strong> area
+    </div>
+
+    <div class="explanation">
+      <strong>Box Model Breakdown (for the yellow box above):</strong><br>
+      • Content → 300px × 140px<br>
+      • Padding → 25px on all sides (adds 50px to width & height)<br>
+      • Border → 8px on all sides (adds 16px to width & height)<br>
+      • Margin → 40px (space outside the border)<br><br>
+      
+      Total space occupied = margin + border + padding + content<br>
+      → Width: 40 + 16 + 50 + 300 = <strong>406px</strong><br>
+      → Height: 40 + 16 + 50 + 140 = <strong>246px</strong>
+    </div>
+  </div>
+
+  <!-- DISPLAY PROPERTY SECTION -->
+  <div class="display-container">
+    <h2>2. CSS Display Property Examples</h2>
+
+    <p><strong>display: block</strong> (takes full width, starts on new line, respects width/height)</p>
+    <div class="item block-demo">Block 1</div>
+    <div class="item block-demo">Block 2</div>
+
+    <p><strong>display: inline</strong> (stays in line, ignores width & height)</p>
+    <span class="item inline-demo">Inline A</span>
+    <span class="item inline-demo">Inline B</span>
+    <span class="item inline-demo">Inline C</span>
+
+    <p><strong>display: inline-block</strong> (like inline but respects width & height)</p>
+    <div class="item inline-block">Inline-Block X</div>
+    <div class="item inline-block">Inline-Block Y</div>
+    <div class="item inline-block">Inline-Block Z</div>
+
+    <p><strong>display: none</strong> (completely removed from layout)</p>
+    <div class="item none-demo">You can't see me</div>
+    <p>(The item above is present in HTML but hidden with display: none)</p>
+
+    <p><strong>display: flex</strong> (modern layout - great for alignment)</p>
+    <div class="flex-demo">
+      <div class="item">Flex 1</div>
+      <div class="item">Flex 2</div>
+      <div class="item">Flex 3</div>
+    </div>
+  </div>
+
+</body>
+</html>

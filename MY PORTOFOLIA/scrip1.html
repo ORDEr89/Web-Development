@@ -1,0 +1,41 @@
+const prompt = require("prompt-sync")();
+
+let name = prompt("Enter your name: ");
+let amount = parseFloat(prompt("Enter total purchase amount: "));
+
+// Validation
+if (!name || isNaN(amount)) {
+    console.log(" Invalid input.");
+} else if (amount < 0) {
+    console.log(" Amount cannot be negative.");
+} else {
+
+    let discountRate = 0;
+
+    // Discount logic
+    if (amount >= 5000) {
+        discountRate = 0.20;
+    } else if (amount >= 3000) {
+        discountRate = 0.10;
+    } else if (amount >= 1000) {
+        discountRate = 0.05;
+    }
+
+    let discountAmount = amount * discountRate;
+    let amountAfterDiscount = amount - discountAmount;
+
+    // Tax
+    let tax = amountAfterDiscount * 0.05;
+    let finalBill = amountAfterDiscount + tax;
+
+    // Premium check
+    let status = finalBill > 4000 ? "Premium Customer" : "Regular Customer";
+
+    console.log("\n===== BILL DETAILS =====");
+    console.log("Name:", name);
+    console.log("Original Amount:", amount.toFixed(2));
+    console.log("Discount:", discountAmount.toFixed(2));
+    console.log("Tax (5%):", tax.toFixed(2));
+    console.log("Final Bill:", finalBill.toFixed(2));
+    console.log("Status:", status);
+}

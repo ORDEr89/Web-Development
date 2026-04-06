@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Calculator</title>
+    <style>
+        body{
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input{
+            margin: 5px;
+            padding: 8px;
+        }
+        button{
+            padding: 8px 15px;
+            margin-top: 10px;
+        }
+        #result{
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Marks Calculator</h2>
+
+<input type="text" id="name" placeholder="Student Name"><br>
+
+<input type="number" id="sub1" placeholder="Subject 1 Marks"><br>
+<input type="number" id="sub2" placeholder="Subject 2 Marks"><br>
+<input type="number" id="sub3" placeholder="Subject 3 Marks"><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+<script>
+function calculate(){
+    let name = document.getElementById("name").value;
+    let s1 = Number(document.getElementById("sub1").value);
+    let s2 = Number(document.getElementById("sub2").value);
+    let s3 = Number(document.getElementById("sub3").value);
+
+    let total = s1 + s2 + s3;
+    let percentage = (total / 300) * 100;
+
+    document.getElementById("result").innerHTML =
+        "Student Name: " + name + "<br>" +
+        "Total Marks: " + total + "<br>" +
+        "Percentage: " + percentage.toFixed(2) + "%";
+}
+</script>
+
+</body>
+</html>

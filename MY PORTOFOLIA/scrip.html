@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Billing System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 40px auto;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+        .output {
+            margin-top: 20px;
+            background: #4513a2;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Smart Billing System</h2>
+
+<input type="text" id="customerName" placeholder="Enter your name">
+<input type="number" id="purchaseAmount" placeholder="Enter total amount">
+
+<button onclick="handleBilling()">Generate Bill</button>
+
+<div id="result" class="output"></div>
+
+<script>
+// Constants
+const TAX_RATE = 0.05;
+
+// Utility: Format numbers
+const formatCurrency = (value) => value.toFixed(2);
+
+// Validate Inputs
+function validateInput(name, amount) {
+    if (!name.trim()) return "Name is required.";
+    if (isNaN(amount)) return "Amount must be a number.";
+    if (amount < 0) return "Amount cannot be negative.";
+    return null;
+}
+
+// Calculate Discount Rate
+function getDiscountRate(amount) {
+    if (amount >= 5000) return 0.20;
+    if (amount >= 3000) return 0.10;
+    if (amount >= 1000) return 0.05;
+    return 0;
+}
+
+// Main Calculation Function
+function calculateBill(amount) {
+    const discountRate = getDiscountRate(amount);
+    const discount = amount * discountRate;
+    const discountedAmount = amount - discount;
+    const tax = discountedAmount * TAX_RATE;
+    const finalAmount = discountedAmount + tax;
+
+    return {
+        discount,
+        tax,
+        finalAmount
+    };
+}
+
+// Determine Customer Status
+function getCustomerStatus(finalAmount) {
+    return finalAmount > 4000 ? " Premium Customer" : "Regular Customer";
+}
+
+// Main Handler
+function handleBilling() {
+    const name = document.getElementById("customerName").value;
+    const amount = parseFloat(document.getElementById("purchaseAmount").value);
+    const resultDiv = document.getElementById("result");
+
+    // Validation
+    const error = validateInput(name, amount);
+    if (error) {
+        resultDiv.innerHTML = ` ${error}`;
+        return;
+    }
+
+    // Calculation
+    const { discount, tax, finalAmount } = calculateBill(amount);
+    const status = getCustomerStatus(finalAmount);
+
+    // Display Result
+    resultDiv.innerHTML = `
+        <strong>Customer:</strong> ${name}<br>
+        <strong>Original Amount:</strong> ${formatCurrency(amount)}<br>
+        <strong>Discount:</strong> ${formatCurrency(discount)}<br>
+        <strong>Tax (5%):</strong> ${formatCurrency(tax)}<br>
+        <strong>Final Bill:</strong> ${formatCurrency(finalAmount)}<br>
+        <strong>Status:</strong> ${status}
+    `;
+}
+</script>
+
+</body>
+</html>

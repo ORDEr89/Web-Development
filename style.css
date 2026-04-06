@@ -1,0 +1,102 @@
+ /* Body */
+body{
+background-color:#eef2f7; /* HEX */
+background-image:url(long-chung-iJUbWqhtTxE-unsplash.jpg);
+background-repeat:no-repeat;
+background-size:cover;
+background-attachment:fixed;
+font-family:Arial, sans-serif;
+margin:0;
+padding:0;
+}
+
+/* Heading */
+h1{
+color:rgb(34,34,150); /* RGB */
+text-align:center;
+padding:20px;
+}
+
+/* Menu */
+.menu{
+list-style:none;
+background:hsl(210,60%,45%); /* HSL */
+padding:15px;
+text-align:center;
+margin:0;
+}
+
+.menu li{
+display:inline-block;
+margin-right:25px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.menu li:hover{
+color:yellow;
+}
+
+/* Float Boxes */
+.box{
+float:left;
+width:120px;
+height:120px;
+margin:15px;
+padding:15px;
+text-align:center;
+font-weight:bold;
+
+border:2px solid #333;
+
+background:rgba(0,0,0,0.08); /* RGBA */
+
+box-shadow:3px 3px 8px gray;
+transition:0.3s;
+}
+
+.box:hover{
+background:lightblue;
+transform:scale(1.05);
+}
+
+.clear{
+clear:both;
+}
+
+/* List */
+.list{
+padding-left:30px;
+}
+
+.list li{
+margin:8px;
+padding:6px;
+background:#ffffff;
+border-left:4px solid steelblue;
+}
+
+/* Table */
+table{
+width:60%;
+margin:20px auto;
+border-collapse:collapse;
+background:white;
+}
+
+th{
+background:#333;
+color:white;
+}
+
+th,td{
+border:1px solid black;
+padding:10px;
+text-align:center;
+}
+
+/* Zebra rows */
+tr:nth-child(even){
+background:#e6e6e6;
+}

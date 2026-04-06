@@ -1,0 +1,31 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+/* Box Model Example */
+.box{
+    width:200px;
+    height:100px;
+
+    background-color: lightblue;
+
+    padding:20px;
+    border:4px solid black;
+    margin:15px;
+
+    text-align:center;
+    line-height:60px;
+}
+
+/* Inline-block example */
+.inline-block{
+    display:inline-block;
+    background-color:lightgreen;
+}
+
+/* Inline example */
+.inline{
+    background-color:orange;
+    padding:10px;
+    margin:5px;
+}

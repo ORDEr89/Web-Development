@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Billing System</title>
+</head>
+<body>
+
+<h2>Smart Billing System</h2>
+
+<script>
+    // Take input from user
+    let name = prompt("Enter your name:");
+    let purchaseAmount = parseFloat(prompt("Enter total purchase amount:"));
+
+    // Validate input
+    if (!name || isNaN(purchaseAmount) || purchaseAmount < 0) {
+        document.write("<h3>Invalid input! Please enter valid details.</h3>");
+    } else {
+        let discountRate = 0;
+
+        // Apply discount using conditions
+        if (purchaseAmount >= 5000) {
+            discountRate = 0.20;
+        } else if (purchaseAmount >= 3000) {
+            discountRate = 0.10;
+        } else if (purchaseAmount >= 1000) {
+            discountRate = 0.05;
+        }
+
+        // Calculations
+        let discountAmount = purchaseAmount * discountRate;
+        let afterDiscount = purchaseAmount - discountAmount;
+        let tax = afterDiscount * 0.05;
+        let finalBill = afterDiscount + tax;
+
+        // Customer status
+        let status = finalBill > 4000 ? "Premium Customer" : "Regular Customer";
+
+        // Display output
+        document.write("<h3>===== BILL DETAILS =====</h3>");
+        document.write("Customer Name: " + name + "<br>");
+        document.write("Original Amount: " + purchaseAmount.toFixed(2) + "<br>");
+        document.write("Discount: " + (discountRate * 100) + "%<br>");
+        document.write("Discount Amount: " + discountAmount.toFixed(2) + "<br>");
+        document.write("Tax (5%): " + tax.toFixed(2) + "<br>");
+        document.write("Final Bill: " + finalBill.toFixed(2) + "<br>");
+        document.write("Status: " + status);
+    }
+</script>
+
+</body>
+</html>

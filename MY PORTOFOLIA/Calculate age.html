@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Age Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input {
+            width: 30%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .details {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Age Calculator</h2>
+
+    <div class="inputs">
+        <input type="number" id="day" placeholder="DD">
+        <input type="number" id="month" placeholder="MM">
+        <input type="number" id="year" placeholder="YYYY">
+    </div>
+
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <div class="error" id="error"></div>
+    <div class="result" id="result"></div>
+    <div class="details" id="details"></div>
+</div>
+
+<script>
+function isValidDate(day, month, year) {
+    const date = new Date(year, month - 1, day);
+    return (
+        date.getFullYear() == year &&
+        date.getMonth() == month - 1 &&
+        date.getDate() == day
+    );
+}
+
+function calculateAge() {
+    const day = parseInt(document.getElementById("day").value);
+    const month = parseInt(document.getElementById("month").value);
+    const year = parseInt(document.getElementById("year").value);
+
+    const errorEl = document.getElementById("error");
+    const resultEl = document.getElementById("result");
+    const detailsEl = document.getElementById("details");
+
+    errorEl.innerText = "";
+    resultEl.innerText = "";
+    detailsEl.innerText = "";
+
+    if (!day || !month || !year) {
+        errorEl.innerText = " Please fill all fields!";
+        return;
+    }
+
+    if (!isValidDate(day, month, year)) {
+        errorEl.innerText = " Invalid date entered!";
+        return;
+    }
+
+    const today = new Date();
+    const birthDate = new Date(year, month - 1, day);
+
+    if (birthDate > today) {
+        errorEl.innerText = " Birth date cannot be in the future!";
+        return;
+    }
+
+    let years = today.getFullYear() - year;
+    let months = today.getMonth() - (month - 1);
+    let days = today.getDate() - day;
+
+    if (days < 0) {
+        months--;
+        const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += prevMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    resultEl.innerText = ` You are ${years} years old`;
+    detailsEl.innerText = `(${years} years, ${months} months, ${days} days)`;
+}
+</script>
+
+</body>
+</html>
