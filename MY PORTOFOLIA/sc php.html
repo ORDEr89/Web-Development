@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Info</title>
+</head>
+<body>
+
+<?php
+
+class Student {
+    public $name;
+    public $age;
+    public $course;
+
+    public function displayInfo() {
+        echo "Name: " . $this->name . "<br>";
+        echo "Age: " . $this->age . "<br>";
+        echo "Course: " . $this->course . "<br>";
+        echo "Status: " . $this->checkAdultOrMinor() . "<br>";
+        echo "<hr>";
+    }
+
+    public function checkAdultOrMinor() {
+        return ($this->age >= 18) ? "Adult" : "Minor";
+    }
+}
+
+// Create objects
+$student1 = new Student();
+$student1->name = "Ali";
+$student1->age = 20;
+$student1->course = "Computer Science";
+
+$student2 = new Student();
+$student2->name = "Sara";
+$student2->age = 16;
+$student2->course = "Mathematics";
+
+// Display
+$student1->displayInfo();
+$student2->displayInfo();
+
+?>
+
+</body>
+</html>

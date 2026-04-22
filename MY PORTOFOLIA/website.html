@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Ud Din | Transport & Automotive Solutions</title>
+
+<style>
+:root {
+    --primary: #0a2540;
+    --secondary: #163d63;
+    --accent: #00bcd4;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Navbar */
+nav {
+    background: var(--secondary);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 40px;
+}
+
+.hero button {
+    padding: 12px 25px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Sections */
+.section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Services */
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px;
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Contact */
+.contact {
+    width: 400px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.contact a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .hero h2 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Amir Ud Din</h1>
+    <p>Transport & Automotive Solutions</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+    <h2>Reliable Transport & Automotive Services</h2>
+    <p>We deliver speed, safety, and performance in every journey.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView()">Contact Us</button>
+</section>
+
+<section id="about" class="section">
+    <h2>About Us</h2>
+    <p style="text-align:center;">
+        Amir Ud Din Business specializes in transport services, automotive solutions, 
+        and vehicle-related services. We are committed to providing reliable, efficient, 
+        and high-quality service to our clients.
+    </p>
+</section>
+
+<section id="services" class="section">
+    <h2>Our Services</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <h3>Transport Services</h3>
+            <p>Safe and reliable transportation for goods and passengers with professional drivers.</p>
+        </div>
+
+        <div class="card">
+            <h3>Car Sales & Sports Cars</h3>
+            <p>We offer high-performance sports cars and quality vehicles at competitive prices.</p>
+        </div>
+
+        <div class="card">
+            <h3>Vehicle Manufacturing & Solutions</h3>
+            <p>Custom vehicle solutions and automotive support tailored to business needs.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="section contact">
+    <h2>Contact Us</h2>
+    <p>Email: amir03352913041@gmail.com</p>
+    <p>Phone: +92 348 0661521</p>
+
+    <a href="https://wa.me/923480661521" target="_blank">Chat on WhatsApp</a>
+</section>
+
+<footer>
+    <p>© 2026 Amir Ud Din Business | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
